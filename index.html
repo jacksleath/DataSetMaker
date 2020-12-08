@@ -13,15 +13,16 @@
 
 <body>
     <div>
-       <textarea id="ScriptOutput" name="Script Output" cols="250" rows="25"></textarea>
+        <textarea class="boxsizingBorder" id="CsvInput" name="CSV Input" placeholder="Enter table here..."></textarea>
     </div>
     <div>
-        <textarea id="CsvInput" name="CSV Input" cols="250" rows="25"></textarea>
-    </div>
-    <div>
-        <input id="tableName" type="text"/>
+        <input id="tableName" type="text" placeholder="Enter table name here..." />
         <button onclick="AddNewTable()">Add Another DataTable</button>
         <button onclick="CopyDataSet()">Copy DataSet</button>
+        <button onclick="ClearDataSet()">Clear DataSet</button>
+    </div>
+    <div>
+        <textarea class="boxsizingBorder" id="ScriptOutput" name="Script Output"></textarea>
     </div>
 </body>
 </html>

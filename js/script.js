@@ -1,11 +1,19 @@
 var scriptToAdd = "var dataSet = new DataSet();\n\n";
 
+var usedNames = [];
+
 function AddNewTable() {
     var tableName = document.getElementById("tableName").value;
     if (tableName == null || tableName == "") {
         console.log("Missing a name");
         return;
     }
+    if (usedNames.includes(tableName)) {
+        console.log("Table name in use");
+        return;
+    }
+    usedNames.push(tableName);
+
     var tableObject = MapCurrentTable();
 
     scriptToAdd = scriptToAdd.concat("var " + tableName + " = new DataTable();\n\n")
@@ -36,6 +44,14 @@ function CopyDataSet() {
     var copyText = document.getElementById("ScriptOutput");
     copyText.select();
     document.execCommand("copy");
+}
+
+function ClearDataSet() {
+    document.getElementById("ScriptOutput").value = "";
+    document.getElementById("CsvInput").value = "";
+    document.getElementById("tableName").value = "";
+    scriptToAdd = "var dataSet = new DataSet();\n\n";
+    usedNames = [];
 }
 
 function MapCurrentTable() {
